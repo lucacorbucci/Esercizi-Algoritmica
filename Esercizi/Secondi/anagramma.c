@@ -42,18 +42,5 @@ int anagramma(unsigned char *s1, unsigned char *s2){
 int main(){
   unsigned char s1[MAX],s2[MAX];
   scanf("%s%s",s1,s2);
-  unsigned char *ss1=malloc(sizeof(char)*strlen(s1));
-  unsigned char *ss2=malloc(sizeof(char)*strlen(s2));
-
-  int i=0;
-  for (i=0;i<strlen(s1);i++){
-    ss1[i]=s1[i];
-  }
-  for (i=0;i<strlen(s2);i++){
-    ss2[i]=s2[i];
-  }
-
-  printf("%d\n",anagramma(ss1,ss2));
-  free(ss1);
-  free(ss2);
+  printf("%d\n",anagramma(s1,s2));
 }
