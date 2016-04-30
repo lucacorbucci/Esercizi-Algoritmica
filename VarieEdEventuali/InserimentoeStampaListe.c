@@ -30,4 +30,6 @@ int main(){
   lis=(lista *)malloc(sizeof(lista)*dim);
   inserisci(lis, dim);
   stampa(lis);
+
+return 0;
 }
