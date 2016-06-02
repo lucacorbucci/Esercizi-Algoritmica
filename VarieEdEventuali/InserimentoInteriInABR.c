@@ -11,7 +11,9 @@ typedef struct _node{
   struct _node *dx;
 } nodo;
 
-
+/*
+  Inserimento di elementi nell'albero binario di ricerca
+*/
 void inserisci(nodo **t,int val){
   nodo* new=(nodo*)malloc(sizeof(nodo));
   if(new==NULL)
@@ -70,21 +72,48 @@ void visitaposticipata(nodo *t){
   }
 }
 
+/*
+  Funzione che libera la memoria allocata per l'albero.
+*/
+void memf(nodo *t){
+  if(t==NULL){
+    return;
+  }
+  else{
+    memf(t->dx);
+    memf(t->sx);
+    free(t);
+  }
+}
+
+
 int main(){
   int dim=0,i=0,val=0;
   nodo *t=NULL;
   scanf("%d",&dim);
 
+  /*
+  Creazione dell'albero
+  */
   for(i=0;i<dim;i++){
     scanf("%d",&val);
     inserisci(&t,val);
   }
+
+  /*
+  Stampa dell'albero in vari modi
+  */
   printf("---Anticipata---\n");
   visitaanticipata(t);
   printf("---Simmetrica---\n");
   visitasimmetrica(t);
   printf("---Posticipata---\n");
   visitaposticipata(t);
+
+  /*
+  Libero la memoria
+  */
+  memf(t);
 
 return 0;
 }
